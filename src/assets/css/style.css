@@ -1,0 +1,317 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+  }
+  /*============== [라이트 모드] : 기본 ============== */
+  :root {
+    /*color*/
+    --bg: #f8fbfb;
+    --grid: #e5eef0;
+    --color-bg-radial: radial-gradient(
+      circle at center,
+      #ffffff 0%,
+      #d1eeee 100%
+    );
+
+    --mint: #8ab4b1;
+    --bg-mint: #ceeae7;
+    --border-mint: #a6ccc8;
+    --txt-mint: #609d93;
+
+    /*lite mode text*/
+    --txt-default: #333;
+    --txt-title: #111111; 
+    --txt-body: #444; 
+    --txt-sub: #666; 
+
+    /*layout*/
+    --container-width: calc(100% - 100px);
+    --container-height: calc(100vh - 40px);
+    --m-container-width: calc(100% - 32px);
+    --m-container-height: calc(100dvh - 40px);
+
+    /* 테마 토글 버튼 */
+    --toggle-bg: #e0e0e0;
+    --toggle-circle: #ffffff;
+    --toggle-text: #666666;
+    --toggle-pos: 3px; /* 라이트 모드일 때 원의 위치 */
+
+    --scrollbar-track: rgba(0, 0, 0, 0.03);
+
+    --card-box-shadow: #c6e9e7;
+  }
+
+  /*============== [다크모드] ==============*/
+  .dark {
+    --bg: #1a1a1a;
+    --grid: #2d3135;
+    --color-bg-radial: radial-gradient(
+      circle at center,
+      #1e293b 0%,
+      #020617 100%
+    );
+
+    --mint: #00ffd5;
+    --bg-mint: #0e534a;
+
+    /*dark mode text*/
+    --txt-default: #fff;
+    --txt-title: #f8fafc; 
+    --txt-body: #cbd5e1; 
+    --txt-sub: #94a3b8; 
+
+    /* ... 기존 변수들 ... */
+    --toggle-bg: var(--grid); 
+    --toggle-circle: #f8fbfb;
+    --toggle-text: var(--txt-mint); 
+    --toggle-pos: calc(100% - 30px - 3px);
+
+    --scrollbar-track: rgba(255, 255, 255, 0.05);
+  }
+}
+
+@layer components {
+  .icon-desktop,
+  .icon-mobile {
+    @apply block h-5 w-5 bg-cover;
+  }
+  .icon-desktop {
+    background-image: url('@/assets/images/pc.png');
+  }
+
+  .dark .icon-desktop {
+    background-image: url('@/assets/images/pc-dark.png');
+  }
+  .icon-mobile {
+    background-image: url('@/assets/images/mobile.png');
+  }
+
+  .dark .icon-mobile {
+    background-image: url('@/assets/images/mobile-dark.png');
+  }
+
+  .app-wrapper {
+    @apply flex min-h-screen w-full bg-radial;
+  }
+
+  .container-wp {
+    @apply relative mx-auto my-5 flex flex-col overflow-hidden rounded-xl;
+    background: var(--bg);
+    color: var(--txt-default);
+    width: var(--m-container-width);
+    height: var(--container-height);
+    height: var(--m-container-height); /* 최신 브라우저 대응 */
+  }
+  .container-wp:before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 z-0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  /*header*/
+  .header-wp {
+    @apply z-10 border-b border-grid bg-background;
+  }
+
+  .header {
+    @apply flex flex-col gap-4 p-4;
+  }
+
+  .logo {
+    @apply text-xl font-bold;
+  }
+
+  .nav-list {
+    @apply flex flex-col gap-2 text-base;
+  }
+  .gnb-link {
+    @apply relative block pl-4 font-medium transition-colors duration-300;
+  }
+  .gnb-link.active::before {
+    @apply absolute left-0 h-full w-1 bg-mint content-[''];
+  }
+
+  .gnb-link:hover,
+  .gnb-link.active {
+    color: var(--txt-mint);
+  }
+
+  .theme-toggle-wp {
+    @apply absolute right-5 top-5;
+  }
+
+  .theme-toggle {
+    @apply relative h-[36px] w-[130px] cursor-pointer rounded-full transition-all duration-500;
+    background-color: var(--toggle-bg);
+  }
+
+  .theme-toggle-circle {
+    @apply absolute top-1/2 h-[30px] w-[30px] -translate-y-1/2 rounded-full shadow-md transition-all duration-300 ease-in-out group-hover:scale-110;
+    background-color: var(--toggle-circle);
+    left: var(--toggle-pos);
+  }
+
+  .theme-toggle-txt {
+    @apply absolute right-[13px] top-1/2 -translate-y-1/2 text-[13px] transition-all duration-300 group-hover:font-medium;
+    color: var(--toggle-text);
+  }
+  .theme-toggle.active .theme-toggle-txt {
+    @apply left-[13px] right-auto;
+  }
+
+  .scroll-wp {
+    @apply relative z-10 flex-1 overflow-y-auto overflow-x-hidden;
+    scrollbar-gutter: auto;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scroll-wp::-webkit-scrollbar {
+    display: none;
+  }
+
+  .content-wp {
+    @apply mx-auto max-w-7xl px-5 py-6;
+  }
+
+  .card-box-wp {
+    @apply grid gap-5;
+  }
+
+  /*  공통 카드 박스 스타일 */
+  .card-box {
+    @apply flex w-full flex-col gap-4 rounded-lg border p-5 transition-all duration-300;
+    background-color: var(--bg);
+    border-color: var(--border-mint);
+    box-shadow: 0 5px 10px 4px var(--card-box-shadow);
+    height: auto; 
+  }
+
+  /* home 레이아웃  */
+  .card-box-wp.home {
+    @apply grid items-start gap-5;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'left1'
+      'left2'
+      'rightTop'
+      'rightBottom1'
+      'rightBottom2';
+  }
+
+  .card-box-wp.home .box1 {
+    grid-area: left1;
+  }
+  .card-box-wp.home .box2 {
+    grid-area: left2;
+  }
+  .card-box-wp.home .box3 {
+    grid-area: rightTop;
+  }
+  .card-box-wp.home .box4 {
+    grid-area: rightBottom1;
+    @apply h-full;
+  }
+  .card-box-wp.home .box5 {
+    grid-area: rightBottom2;
+    @apply h-full;
+  }
+
+  /* 태블릿: 769px ~ 1023px  */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .card-box-wp.home {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* 데스크탑: 1024px 이상에서만 2열로 변경 */
+  @media (min-width: 1024px) {
+    .card-box-wp.home {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 2fr 1.2fr 0.8fr;
+      grid-template-areas:
+        'left1  rightTop' 
+        'left2  rightBottom1' 
+        'left2  rightBottom2'; 
+
+      height: var(--container-height);
+      gap: 20px;
+    }
+
+    .card-box {
+      @apply h-full min-h-0 overflow-hidden;
+    }
+
+    .card-content {
+      @apply flex-1 overflow-y-auto;
+      scrollbar-gutter: stable;
+    }
+
+    .app-wrapper {
+      @apply min-h-screen;
+    }
+
+    .header {
+      @apply mx-auto flex max-w-7xl flex-row items-center justify-between px-2 py-5;
+    }
+    .logo {
+      @apply text-3xl;
+    }
+
+    .nav-list {
+      @apply flex flex-row gap-7;
+    }
+
+    .gnb-link {
+      @apply pl-0;
+    }
+    .gnb-link.active::before {
+      @apply content-none;
+    }
+    .theme-toggle-wp {
+      @apply static;
+    }
+
+    .container-wp {
+      width: var(--container-width);
+      height: var(--container-height);
+    }
+
+    .content-wp {
+      @apply py-10;
+    }
+
+    .scroll-wp {
+      scrollbar-gutter: stable;
+      scrollbar-width: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    /*----스크롤 바 공통----*/
+    .scroll-wp::-webkit-scrollbar {
+      display: block;
+    }
+    ::-webkit-scrollbar {
+      @apply block w-[9px];
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--txt-mint);
+      @apply rounded-full opacity-50;
+      border: 2px solid var(--bg);
+      background-clip: padding-box;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: var(--scrollbar-track);
+      @apply rounded-full;
+    }
+  }
+}
