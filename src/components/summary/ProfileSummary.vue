@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col gap-6"> <div class="flex items-start gap-6">
-      <div class="w-1/4 flex justify-center shrink-0">
+  <div class="flex flex-col gap-6 max-md:gap-3"> <div class="flex items-start gap-6 max-md:flex-col">
+      <div class="w-1/4 max-md:w-full flex justify-center shrink-0">
         <div class="w-24 h-32 border-2 border-grid shadow-md rounded-lg overflow-hidden bg-white">
           <img
             src="@/assets/images/profile.jpg"
@@ -10,7 +10,7 @@
         </div>
       </div>
 
-      <div class="w-3/4 flex flex-col gap-3">
+      <div class="w-3/4 max-md:w-full flex flex-col gap-3">
         <div class="text-sm leading-relaxed">
           <p class="text-base font-bold text-title mb-1">안녕하세요, 웹 퍼블리셔 김미영입니다.</p>
           <p>
@@ -35,7 +35,7 @@
 
     <div class="flex flex-col gap-3 pt-4 border-t border-dashed border-grid">
       <div class="flex gap-6 max-md:gap-3">
-        <div class="w-1/4 text-center font-bold text-sub text-sm">Certification</div>
+        <div class="w-1/4 text-center max-md:text-left font-bold text-sub text-sm break-words">Certification</div>
         <div class="w-3/4 text-sm text-body leading-relaxed">
           <p>정보처산업기사</p>
           <p>웹 접근성 서포터즈 교육 수료 및 활동</p>
@@ -44,7 +44,7 @@
       </div>
       
       <div class="flex gap-6 max-md:gap-3" >
-        <div class="w-1/4 text-center font-bold text-sub text-sm">Interested in</div>
+        <div class="w-1/4 text-center max-md:text-left font-bold text-sub text-sm break-words">Interested in</div>
         <div class="w-3/4 text-sm text-body leading-relaxed">
           <p>React, Vue, Tailwind CSS, TypeScript</p>
         </div>

@@ -130,13 +130,19 @@
   }
 
   .nav-list {
-    @apply flex flex-col gap-2 text-base;
+    @apply flex justify-between text-base;
   }
+
   .gnb-link {
-    @apply relative block pl-4 font-medium transition-colors duration-300;
+    @apply relative font-medium transition-colors duration-200;
+  }
+
+  .gnb-link::before {
+    @apply absolute left-0 -bottom-2 w-full h-1 bg-mint content-[''] opacity-0;
+    transition: opacity 0.15s ease-out;
   }
   .gnb-link.active::before {
-    @apply absolute left-0 h-full w-1 bg-mint content-[''];
+    @apply opacity-100;
   }
 
   .gnb-link:hover,
@@ -145,7 +151,7 @@
   }
 
   .theme-toggle-wp {
-    @apply absolute right-5 top-5;
+    @apply absolute right-5 top-4;
   }
 
   .theme-toggle {
