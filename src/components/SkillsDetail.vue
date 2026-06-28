@@ -9,7 +9,7 @@
       class="group flex w-[60px] cursor-pointer flex-col items-center gap-1 text-center"
     >
       <div
-        class="flex h-10 w-10 items-center justify-center rounded-lg "
+        class="flex h-10 w-10 items-center justify-center rounded-lg"
         :class="{ 'border border-mint': selectedId === skill.id }"
       >
         <Icon :icon="skill.icon" class="h-8 w-8 object-contain" />
@@ -23,8 +23,7 @@
     </div>
   </div>
 
-
-  <div class="bg-lightmint relative rounded-2xl p-6 mt-5">
+  <div class="relative mt-5 rounded-2xl bg-lightmint p-6">
     <div class="flex flex-col gap-1" v-if="currentSkill">
       <h4 class="flex items-center gap-2 text-base font-bold text-title">
         {{ currentSkill.name }}
@@ -39,21 +38,12 @@
       </p>
     </div>
   </div>
-  
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { ref, computed } from 'vue';
-
-interface Skills {
-  id: number;
-  name: string;
-  icon: string;
-  status?: string;
-  desc: string;
-  color?: string;
-}
+import type { SkillsDetail } from '@/types/portfolio';
 
 const selectedId = ref<number>(1);
 
@@ -61,7 +51,7 @@ const currentSkill = computed(
   () => skills.value.find((s) => s.id === selectedId.value) || skills.value[0]
 );
 
-const skills = ref<Skills[]>([
+const skills = ref<SkillsDetail[]>([
   {
     id: 1,
     name: 'Vue.js',
@@ -151,5 +141,4 @@ const skills = ref<Skills[]>([
     desc: '미니 쇼핑몰 프로젝트를 진행하면서 공부중',
   },
 ]);
-
 </script>

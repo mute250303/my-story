@@ -1,13 +1,16 @@
 <template>
   <component
-    :is="to ? 'router-link': 'div'"
+    :is="to ? 'router-link' : 'div'"
     :to="to"
     class="card-box"
-    :class="[gridClass, to?'cursor-pointer':'']"
+    :class="[gridClass, to ? 'cursor-pointer' : '']"
   >
-  <h2 v-if="title" class="font-bold text-lg">{{ title }}
-    <span v-if="subTxt" class="font-normal opacity-70 text-xs pl-2">{{ subTxt }}</span>
-  </h2>
+    <h2 v-if="title" class="text-lg font-bold">
+      {{ title }}
+      <span v-if="subTxt" class="pl-2 text-xs font-normal opacity-70">{{
+        subTxt
+      }}</span>
+    </h2>
     <div class="card-content pr-2">
       <slot></slot>
     </div>
@@ -15,12 +18,8 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  title?: string;
-  gridClass?: string;
-  to?: string;
-  subTxt? :string;
-}>();
+import type { CardBoxProps } from '@/types/portfolio';
+
+const props = defineProps<CardBoxProps>();
 </script>
 
-<style scoped></style>

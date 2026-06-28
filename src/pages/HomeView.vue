@@ -2,7 +2,7 @@
   <section class="section-wp home">
     <div class="card-box-wp home">
       <CardBox
-        v-for="(item, index) in cardList"
+        v-for="(item, index) in homeCard"
         :key="index"
         :title="item.title"
         :gridClass="item.gridClass"
@@ -15,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import type { HomeCardItem } from '@/types/portfolio';
 import CardBox from '@/components/common/CardBox.vue';
 import ProfileSummary from '@/components/summary/ProfileSummary.vue';
 import ActivitySummary from '@/components/summary/ActivitySummary.vue';
@@ -22,7 +23,7 @@ import WorkSummary from '@/components/summary/WorkSummary.vue';
 import SkillSummary from '@/components/summary/SkillSummary.vue';
 import ContactSummary from '@/components/summary/ContactSummary.vue';
 
-const cardList = [
+const homeCard: HomeCardItem[] = [
   {
     title: 'ABOUT/PROFILE',
     gridClass: 'box1',
@@ -35,8 +36,18 @@ const cardList = [
     contentComponent: ActivitySummary,
     to: '/about',
   },
-  { title: 'WORK', gridClass: 'box3', contentComponent: WorkSummary, to: '/work', },
-  { title: 'SKILLS', gridClass: 'box4', contentComponent: SkillSummary, to: '/skills', },
+  {
+    title: 'WORK',
+    gridClass: 'box3',
+    contentComponent: WorkSummary,
+    to: '/work',
+  },
+  {
+    title: 'SKILLS',
+    gridClass: 'box4',
+    contentComponent: SkillSummary,
+    to: '/skills',
+  },
   {
     title: 'CONTACT',
     gridClass: 'box5',

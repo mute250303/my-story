@@ -2,7 +2,7 @@
   <div class="section-wp skills">
     <div class="card-box-wp skills">
       <CardBox
-        v-for="(item, index) in aboutList"
+        v-for="(item, index) in skillList"
         :key="index"
         :title="item.title"
         :gridClass="item.gridClass"
@@ -15,16 +15,17 @@
 </template>
 
 <script setup lang="ts">
+import type { SkillListItem } from '@/types/portfolio';
 import CardBox from '@/components/common/CardBox.vue';
 import SkillsDetail from '@/components/SkillsDetail.vue';
 import ContactSummary from '@/components/summary/ContactSummary.vue';
 
-const aboutList = [
+const skillList: SkillListItem[] = [
   {
     title: 'SKILLS DETAIL',
     gridClass: 'skills detail',
     contentComponent: SkillsDetail,
-    subTxt:'아이콘을 클릭하면 상세 업무 경험을 확인하실 수 있습니다.'
+    subTxt: '아이콘을 클릭하면 상세 업무 경험을 확인하실 수 있습니다.',
   },
   {
     title: 'CONTACT',

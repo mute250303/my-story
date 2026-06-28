@@ -54,11 +54,8 @@
 </template>
 
 <script setup lang="ts">
-interface PageInfo {
-  name: string;
-  desc: string;
-  sub?: string; 
-}
+import type { PageInfo } from '@/types/portfolio';
+
 const pageInfoList:PageInfo[] = [
   {
     name : 'Home',

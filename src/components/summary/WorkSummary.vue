@@ -25,8 +25,10 @@
 </template>
 
 <script setup lang="ts">
+import type { allProjectItem } from '@/types/portfolio';
+
 // work summary 
-const allProjects = [
+const allProjects : allProjectItem[] = [
   { 
     title: '한화시스템 클레버스 확산 프로젝트', 
     category: 'Vue.js 프로젝트', 

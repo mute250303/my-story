@@ -27,12 +27,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
-
-interface Skills {
-  name: string;
-  icon: string;
-  color?: string;
-}
+import type { Skills } from '@/types/portfolio';
 
 const skills = ref<Skills[]>([
   { name: 'Vue.js', icon: 'vscode-icons:file-type-vue' },

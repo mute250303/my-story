@@ -13,8 +13,9 @@
 </template>
 
 <script setup lang="ts">
+import type { ContactItems } from '@/types/portfolio';
 import { Icon } from '@iconify/vue';
-const contacts = [
+const contacts:ContactItems[] = [
   { 
     label: 'Email', 
     value: 'proven2@naver.com', 
