@@ -41,6 +41,11 @@ import type { ActivityItem } from '@/types/portfolio';
 const activities: ActivityItem[] = [
   //정적데이터 이므로 ref reactive 사용하지 않음  - 일반 자바스크립트 배열
   {
+    year: '2026 - 2026',
+    title: '[금융] 우리금융지주 표준내부통제시스템구축 프로젝트 수행',
+    desc: 'jsp 환경에서 퍼블 수정 및 디자인 반영하였음. 이미 개발된 사이트를 가지고 고도화했음. jsp파일을 다룸',
+  },
+  {
     year: '2023 - 2026',
     title: '[기업] Vue.js 기반 한화시스템 ICT 클레버스 확산 프로젝트 수행',
     desc: '기존 운영 프로젝트의 경우 Vue2 Vue3 혼재 (option API 와 composition API) 되어 있었으며, 새로운 프로젝트는 Vue3 + Typescript + Nuxt 환경에서 작업하였음',
